@@ -16,17 +16,8 @@ public class KafkaIntegrationTestLocalDependency implements IntegrationTestLocal
     }
 
     @Override
-    public void initializeRunningContainer(GenericContainer it) {
-
-    }
-
-    @Override
     public void initializeSystemProperties(GenericContainer it) {
-        String bootstrap = ((KafkaContainer) it).getBootstrapServers();
-
-        System.out.println("bootstrap->"+bootstrap);
-
         System.setProperty("kafka.topics.events", "events");
-        System.setProperty("spring.kafka.bootstrapServers", bootstrap);
+        System.setProperty("spring.kafka.bootstrapServers", ((KafkaContainer) it).getBootstrapServers());
     }
 }

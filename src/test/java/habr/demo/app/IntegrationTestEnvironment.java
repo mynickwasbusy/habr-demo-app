@@ -25,7 +25,6 @@ public class IntegrationTestEnvironment implements Extension {
     private static void initializeContainer(IntegrationTestLocalDependency dependency) {
         GenericContainer container = dependency.containerDefinition();
         container.start();
-        dependency.initializeRunningContainer(container);
         dependency.initializeSystemProperties(container);
         Runtime.getRuntime().addShutdownHook(new Thread(container::stop));
         INITIALIZED_CONTAINERS.put(dependency.name(), container);
