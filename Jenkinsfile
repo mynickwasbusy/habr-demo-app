@@ -107,7 +107,7 @@ spec:
         stage ('publish artifact') {
             steps {
                 container('docker') {
-                    withDockerRegistry([ credentialsId: "67f0744f-7840-4335-9d7f-6dd23adeb0ee", url: "" ]) {
+                    withDockerRegistry([ credentialsId: "2e5f8c0d-e5c5-4419-95cf-97c7635f53e7", url: "" ]) {
                         sh "docker push kirlirable/demo/app:${revision}"
                     }
                 }
