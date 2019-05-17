@@ -108,7 +108,7 @@ spec:
             steps {
                 container('docker') {
                     withDockerRegistry([ credentialsId: "2e5f8c0d-e5c5-4419-95cf-97c7635f53e7", url: "" ]) {
-                        sh "ddocker push kirlirable/demodevops:${revision}"
+                        sh "docker push kirlirable/demodevops:${revision}"
                     }
                 }
             }
