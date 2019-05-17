@@ -114,11 +114,6 @@ spec:
             }
         }
         stage ('deploy to env') {
-            when {
-                expression {
-                    branch == 'master' || params.DEPLOY_BRANCH_TO_TST
-                }
-            }
             steps {
                 build job: './../Deploy', parameters: [
                         [$class: 'StringParameterValue', name: 'GIT_REPO', value: 'habr-demo-app'],
