@@ -99,8 +99,7 @@ spec:
                 container('docker') {
                     script {
                         registryIp = sh(script: 'getent hosts registry.kube-system | awk \'{ print $1 ; exit }\'', returnStdout: true).trim()
-                        registryIp = 10.0.0.0/24  
-                        sh "docker build . -t ${registryIp}/demo/app:${revision} --build-arg REVISION=${revision}"
+                        sh "docker build . -t 10.0.0.0/24/demo/app:${revision} --build-arg REVISION=${revision}"
                     }
                 }
             }
@@ -108,7 +107,7 @@ spec:
         stage ('publish artifact') {
             steps {
                 container('docker') {
-                    sh "docker push ${registryIp}/demo/app:${revision}"
+                    sh "docker push 10.0.0.0/24/demo/app:${revision}"
                 }
             }
         }
