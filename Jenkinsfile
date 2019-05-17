@@ -105,11 +105,6 @@ spec:
             }
         }
         stage ('publish artifact') {
-            when {
-                expression {
-                    branch == 'master' || params.DEPLOY_BRANCH_TO_TST
-                }
-            }
             steps {
                 container('docker') {
                     sh "docker push 192.168.99.107/demo/app:${revision}"
