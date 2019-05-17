@@ -99,7 +99,7 @@ spec:
                 container('docker') {
                     script {
                         registryIp = sh(script: 'getent hosts registry.kube-system | awk \'{ print $1 ; exit }\'', returnStdout: true).trim()
-                        sh "docker build . -t 10.0.0.0/24/demo/app:${revision} --build-arg REVISION=${revision}"
+                        sh "docker build . -t kirlirable/demo/app:${revision} --build-arg REVISION=${revision}"
                     }
                 }
             }
@@ -107,7 +107,9 @@ spec:
         stage ('publish artifact') {
             steps {
                 container('docker') {
-                    sh "docker push 10.0.0.0/24/demo/app:${revision}"
+                    withDockerRegistry([ credentialsId: "67f0744f-7840-4335-9d7f-6dd23adeb0ee", url: "" ]) {
+                        sh "docker push kirlirable/demo/app:${revision}"
+                    }
                 }
             }
         }
