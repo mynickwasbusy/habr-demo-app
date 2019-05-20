@@ -9,7 +9,7 @@ spec:
   - host: {{ .Release.Namespace }}-app.192.168.99.100.nip.io
     http:
       paths:
+      - path: /
       - backend:
           serviceName: habr-demo-app
           servicePort: 80
-        path: /
