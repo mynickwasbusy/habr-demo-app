@@ -23,4 +23,14 @@ public class InfoEndpoint {
                 environment.getEnvironment()
         );
     }
+    
+    @GetMapping("/hi")
+    public Info getHi() {
+        return new Info(
+                "Hi",
+                version.getVersion(),
+                environment.getEnvironment()
+
+        );
+    }
 }
