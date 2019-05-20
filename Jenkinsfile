@@ -54,7 +54,6 @@ spec:
     options {
         skipDefaultCheckout true
     }
-
     stages {
         stage ('checkout') {
             steps {
