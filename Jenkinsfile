@@ -14,7 +14,6 @@ def revision
 def registryIp
 
 pipeline {
-
     agent {
         kubernetes {
             label 'build-service-pod'
