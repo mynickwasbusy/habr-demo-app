@@ -27,7 +27,7 @@ public class InfoEndpoint {
     @GetMapping("/hi")
     public Info getHi() {
         return new Info(
-                "gratz",
+                "gratz!",
                 version.getVersion(),
                 environment.getEnvironment()
 
